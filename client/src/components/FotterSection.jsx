@@ -1,62 +1,63 @@
-import React from 'react'
+import React from 'react';
+import { assets } from '../assets/assets';
 
-const FooterSection = () => {
+// A single icon component for better reusability and cleaner code
+const SocialIcon = ({ href, children }) => (
+  <a href={href} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:opacity-75 transition-opacity duration-300">
+    {children}
+  </a>
+);
+
+export default function Footer() {
   return (
-    <footer className="bg-gray-50 border-t border-gray-200 py-6 px-6">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center">
-          <h2 className="text-2xl font-bold text-gray-900">
-            J<span className="text-orange-500">o</span>bNest
-          </h2>
-        </div>
+    <footer className="bg-white dark:bg-gray-900 w-full border-t border-gray-200 dark:border-gray-700">
+      <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+        <div className="flex flex-col md:flex-row items-center justify-between">
+          {/* Left Side: Logo */}
+          <div className="mb-4 md:mb-0">
+            <a href="#" className="flex items-center">
+              {/* You can replace this with your actual logo SVG or Image */}
+              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">JobNest</span>
+            </a>
+          </div>
 
-        {/* Copyright */}
-        <div className="text-gray-500 text-sm">
-          All right reserved. Copyright @job-portal
-        </div>
+          {/* Center: Copyright Text */}
+          <div className="text-sm text-gray-500 text-center dark:text-gray-400 mb-4 md:mb-0">
+            © {new Date().getFullYear()} JobNest™. All Rights Reserved.
+          </div>
 
-        {/* Social Icons */}
-        <div className="flex items-center gap-4">
-          <a
-            href="#"
-            className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-colors duration-200"
-            aria-label="Google Play Store"
-          >
-            <div className="w-3 h-3 bg-current rounded-full"></div>
-          </a>
-          <a
-            href="#"
-            className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-colors duration-200"
-            aria-label="Apple App Store"
-          >
-            <div className="w-3 h-3 bg-current rounded-full"></div>
-          </a>
-          <a
-            href="#"
-            className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-colors duration-200"
-            aria-label="Facebook"
-          >
-            <div className="w-3 h-3 bg-current rounded-full"></div>
-          </a>
-          <a
-            href="#"
-            className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-colors duration-200"
-            aria-label="Twitter"
-          >
-            <div className="w-3 h-3 bg-current rounded-full"></div>
-          </a>
-          <a
-            href="#"
-            className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-colors duration-200"
-            aria-label="Instagram"
-          >
-            <div className="w-3 h-3 bg-current rounded-full"></div>
-          </a>
+          {/* Right Side: Social Media Icons */}
+          <div className="flex space-x-5 rtl:space-x-reverse">
+            {/* Replace the src in the <img> tags below with the actual paths to your SVG files.
+              For example, if your icons are in a public/icons folder, the path would be "/icons/play-store.svg".
+            */}
+            <SocialIcon href="#">
+              <img src={assets.play_store} alt="Google Play" className="w-6 h-6" />
+              <span className="sr-only">Google Play page</span>
+            </SocialIcon>
+
+            <SocialIcon href="#">
+               <img src={assets.app_store} alt="Apple App Store" className="w-6 h-6" />
+              <span className="sr-only">Apple App Store page</span>
+            </SocialIcon>
+            
+            <SocialIcon href="#">
+              <img src={assets.facebook_icon} alt="Facebook" className="w-6 h-6" />
+              <span className="sr-only">Facebook page</span>
+            </SocialIcon>
+
+            <SocialIcon href="#">
+              <img src={assets.instagram_icon} alt="Instagram" className="w-6 h-6" />
+              <span className="sr-only">Instagram community</span>
+            </SocialIcon>
+
+            <SocialIcon href="#">
+              <img src={assets.twitter_icon} alt="Twitter" className="w-6 h-6" />
+              <span className="sr-only">Twitter page</span>
+            </SocialIcon>
+          </div>
         </div>
       </div>
     </footer>
   );
-};
-
-export default FooterSection;
+}
