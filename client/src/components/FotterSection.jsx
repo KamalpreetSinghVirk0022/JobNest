@@ -16,8 +16,7 @@ export default function Footer() {
           {/* Left Side: Logo */}
           <div className="mb-4 md:mb-0">
             <a href="#" className="flex items-center">
-              {/* You can replace this with your actual logo SVG or Image */}
-              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">JobNest</span>
+              <img src={assets.logo} alt="JobNest Logo" />
             </a>
           </div>
 
