@@ -31,27 +31,27 @@ export default function Footer() {
               For example, if your icons are in a public/icons folder, the path would be "/icons/play-store.svg".
             */}
             <SocialIcon href="#">
-              <img src={assets.play_store} alt="Google Play" className="w-6 h-6" />
+              <img onClick={() => window.open("https://play.google.com/store", "_blank")} src={assets.play_store} alt="Google Play" className="w-6 h-6" />
               <span className="sr-only">Google Play page</span>
             </SocialIcon>
 
             <SocialIcon href="#">
-               <img src={assets.app_store} alt="Apple App Store" className="w-6 h-6" />
+               <img onClick={() => window.open("https://www.apple.com/app-store/", "_blank")} src={assets.app_store} alt="Apple App Store" className="w-6 h-6" />
               <span className="sr-only">Apple App Store page</span>
             </SocialIcon>
             
             <SocialIcon href="#">
-              <img src={assets.facebook_icon} alt="Facebook" className="w-6 h-6" />
+              <img onClick={() => window.open("https://www.facebook.com", "_blank")} src={assets.facebook_icon} alt="Facebook" className="w-6 h-6" />
               <span className="sr-only">Facebook page</span>
             </SocialIcon>
 
             <SocialIcon href="#">
-              <img src={assets.instagram_icon} alt="Instagram" className="w-6 h-6" />
+              <img onClick={() => window.open("https://www.instagram.com", "_blank")} src={assets.instagram_icon} alt="Instagram" className="w-6 h-6" />
               <span className="sr-only">Instagram community</span>
             </SocialIcon>
 
             <SocialIcon href="#">
-              <img src={assets.twitter_icon} alt="Twitter" className="w-6 h-6" />
+              <img onClick={() => window.open("https://twitter.com", "_blank")} src={assets.twitter_icon} alt="Twitter" className="w-6 h-6" />
               <span className="sr-only">Twitter page</span>
             </SocialIcon>
           </div>
