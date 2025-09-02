@@ -8,7 +8,10 @@ const JobCard = ({ job }) => {
   const navigate=useNavigate();
 
   return (
-    <div className='border p-6 shadow rounded bg-[#edefef]'>
+    <div className='border p-6 shadow rounded bg-[#edefef]  transition-all duration-300 ease-in-out  hover:scale-105 
+    hover:shadow-xl 
+    hover:bg-blue-100 
+    hover:border-blue-400'>
       <div className="flex justify-between items-center">
         <img className="h-8" src={assets.company_icon} alt="" />
       </div>
