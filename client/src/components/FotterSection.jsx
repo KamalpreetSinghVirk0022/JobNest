@@ -27,9 +27,7 @@ export default function Footer() {
 
           {/* Right Side: Social Media Icons */}
           <div className="flex space-x-5 rtl:space-x-reverse">
-            {/* Replace the src in the <img> tags below with the actual paths to your SVG files.
-              For example, if your icons are in a public/icons folder, the path would be "/icons/play-store.svg".
-            */}
+            
             <SocialIcon href="#">
               <img onClick={() => window.open("https://play.google.com/store", "_blank")} src={assets.play_store} alt="Google Play" className="w-6 h-6" />
               <span className="sr-only">Google Play page</span>
