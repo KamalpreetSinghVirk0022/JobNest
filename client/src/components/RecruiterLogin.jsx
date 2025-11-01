@@ -1,10 +1,14 @@
 import React, { useContext, useState } from "react" 
 import { assets } from "../assets/assets"
-import { APIKeys } from "@clerk/clerk-react"
 import { AppContext } from "../context/AppContext"
 import { useEffect } from "react"
+import axios from "axios"
+import { toast } from "react-toastify"
+import { useNavigate } from "react-router-dom"
 
 const RecruiterLogin = () => {
+  const navigate = useNavigate()
+
   const [state,setState]=useState('Login')
   const [name,setName]=useState('')
   const [password,setPassword]=useState('')
@@ -17,7 +21,7 @@ const RecruiterLogin = () => {
 
   const[isTextDataSubmitted,setIsTextDataSubmitted]=useState(false)
 
-  const {setShowRecruiterLogin} = useContext(AppContext)
+  const {setShowRecruiterLogin, backendUrl,setCompanyToken,setCompanyData} = useContext(AppContext)
 
   const onSubmitHandler=async(e)=>{
 
@@ -25,7 +29,60 @@ const RecruiterLogin = () => {
 
 
     if(state === "Sign Up" && !isTextDataSubmitted){
-      setIsTextDataSubmitted(true)
+      return setIsTextDataSubmitted(true)
+    }
+
+
+    try {
+
+      if(state === "Login"){
+        const {data} = await axios.post(backendUrl + '/api/company/login',{email,password})
+
+        if(data.success){
+
+          setCompanyData(data.company)
+          setCompanyToken(data.token)
+          localStorage.setItem('companyToken',data.token)
+          setShowRecruiterLogin(false)
+          navigate('/dashboard')
+
+        }
+        else{
+          toast.error(data.message)
+        }
+
+
+      } else {
+        const formData = new FormData()
+        formData.append('name',name)
+        formData.append('password',password)
+        formData.append('email',email)
+        formData.append('image',image)
+
+
+
+        const { data } = await axios.post(backendUrl + '/api/company/register',formData)
+
+
+        if(data.success){
+
+          setCompanyData(data.company)
+          setCompanyToken(data.token)
+          localStorage.setItem('companyToken',data.token)
+          setShowRecruiterLogin(false)
+          navigate('/dashboard')
+
+        }
+        else{
+          toast.error(data.message)
+        }
+
+      }
+      
+    } catch (error) {
+
+      toast.error(error.message)
+      
     }
 
 
