@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar";
 import kconvert from "k-convert";
 import moment from "moment";
 import Footer from "../components/FotterSection";
-import JobCard from "../components/JObCard";
+import JobCard from "../components/JobCard";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useAuth } from "@clerk/clerk-react";
