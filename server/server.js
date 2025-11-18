@@ -28,7 +28,17 @@ await connectCloudinary()
 
 //Middlewares
 
-app.use(cors())
+app.use(
+  cors({
+    origin: [
+      "https://job-nest-snowy.vercel.app/", // <-- Replace with actual deployed frontend URL
+      "http://localhost:3000",            // <-- Keep for local development
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    credentials: true, // Only if you're sending cookies/auth headers
+  })
+);
+
 app.use(express.json())
 app.use(clerkMiddleware())
 
